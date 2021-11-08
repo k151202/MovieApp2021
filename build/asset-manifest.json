@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/MovieApp2021/static/js/main.069c7dbe.chunk.js",
+    "main.js.map": "/MovieApp2021/static/js/main.069c7dbe.chunk.js.map",
+    "runtime-main.js": "/MovieApp2021/static/js/runtime-main.64108223.js",
+    "runtime-main.js.map": "/MovieApp2021/static/js/runtime-main.64108223.js.map",
+    "static/js/2.a9cbad48.chunk.js": "/MovieApp2021/static/js/2.a9cbad48.chunk.js",
+    "static/js/2.a9cbad48.chunk.js.map": "/MovieApp2021/static/js/2.a9cbad48.chunk.js.map",
+    "index.html": "/MovieApp2021/index.html",
+    "static/js/2.a9cbad48.chunk.js.LICENSE.txt": "/MovieApp2021/static/js/2.a9cbad48.chunk.js.LICENSE.txt",
+    "static/media/imdb.png": "/MovieApp2021/static/media/imdb.8b13a62e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.64108223.js",
+    "static/js/2.a9cbad48.chunk.js",
+    "static/js/main.069c7dbe.chunk.js"
+  ]
+}

@@ -29,6 +29,7 @@ export default class extends React.Component {
       return push("/");
     }
     let result = null;
+
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));

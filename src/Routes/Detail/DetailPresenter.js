@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import Tabs from "Components/Tabs";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -43,7 +44,7 @@ const Cover = styled.div`
 `;
 
 const Data = styled.div`
-  width: 70%;
+  width: 65%;
   margin-left: 10px;
 `;
 
@@ -59,6 +60,14 @@ const Item = styled.span``;
 
 const Divider = styled.span`
   margin: 0 10px;
+`;
+
+const Homepage = styled.div`
+  width: 40px;
+  height: 20px;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(${(props) => props.imdb});
 `;
 
 const Overview = styled.p`
@@ -121,8 +130,88 @@ const DetailPresenter = ({ result, error, loading }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            <Item>
+              {result.imdb_id ? "" : <Divider>•</Divider>}
+              {result.imdb_id ? (
+                <a href={`https://imdb.com/title/${result.imdb_id}`}>
+                  <Homepage
+                    imdb={require("../../assets/imdb.png").default}
+                  ></Homepage>
+                </a>
+              ) : (
+                <a href={result.homepage}>Link</a>
+              )}
+            </Item>
           </ItemContainer>
-          <Overview>{result.overview}</Overview>
+          <ItemContainer>
+            {result.seasons ? (
+              <Tabs>
+                <div label="Overview">
+                  <Overview>{result.overview}</Overview>
+                </div>
+                <div label="Production">
+                  {result.production_companies
+                    ? result.production_companies.map((company) => (
+                        <li key={company.id}>{company.name}</li>
+                      ))
+                    : ""}
+                </div>
+                <div label="Seasons">
+                  {result.seasons.map((season) => (
+                    <div className="season" key={season.id}>
+                      <img
+                        src={
+                          season.poster_path
+                            ? `https://image.tmdb.org/t/p/w154${season.poster_path}`
+                            : require("../../assets/noPosterSmall.png").default
+                        }
+                      />
+                      <div>{season.name}</div>
+                    </div>
+                  ))}
+                </div>
+                <div label="Trailer">
+                  <div className="video-responsive">
+                    <iframe
+                      width="560"
+                      height="315"
+                      src={`https://www.youtube.com/embed/${
+                        result.videos.results[result.videos.results.length - 1]
+                          .key
+                      }`}
+                      frameBorder="0"
+                    />
+                  </div>
+                </div>
+              </Tabs>
+            ) : (
+              <Tabs>
+                <div label="Overview">
+                  <Overview>{result.overview}</Overview>
+                </div>
+                <div label="Production">
+                  {result.production_companies
+                    ? result.production_companies.map((company) => (
+                        <li key={company.id}>{company.name}</li>
+                      ))
+                    : ""}
+                </div>
+                <div label="Trailer">
+                  <div className="video-responsive">
+                    <iframe
+                      width="560"
+                      height="315"
+                      src={`https://www.youtube.com/embed/${
+                        result.videos.results[result.videos.results.length - 1]
+                          .key
+                      }`}
+                      frameBorder="0"
+                    />
+                  </div>
+                </div>
+              </Tabs>
+            )}
+          </ItemContainer>
         </Data>
       </Content>
     </Container>
