@@ -32,7 +32,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://k151202.github.io/MovieApp2021",
+  "homepage": "https://pensive-noether-837554.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
